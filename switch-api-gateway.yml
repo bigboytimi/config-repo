@@ -4,6 +4,9 @@ auth:
 spring:
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
       routes:
         - id: switch-auth-service
           uri: http://localhost:8082
@@ -15,6 +18,7 @@ spring:
             - Path=/onboarding/**,/bill-payments/**,/transfer/**,/dashboard/**
           filters:
             - AuthenticationFilter
+
 
     eureka:
       client:
