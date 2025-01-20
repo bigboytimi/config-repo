@@ -3,3 +3,11 @@ switch:
     mirror:
       bill: '8887654321888'
       tran: '8887654321888'
+
+spring:
+  application:
+    name: switch-middleware
+  datasource:
+    url: jdbc:mysql://localhost:3306/switchmiddlewaredb
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
