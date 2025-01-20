@@ -1,1 +1,25 @@
-auth.service.url=http:localhost:8082/auth/validate
+auth:
+  service:
+    url: http:localhost:8082/auth/validate
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: switch-auth-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/auth/**
+        - id: switch-middleware
+          uri: http://localhost:8085
+          predicates:
+            - Path=/onboarding/**,/bill-payments/**,/transfer/**,/dashboard/**
+          filters:
+            - AuthenticationFilter
+
+    eureka:
+      client:
+        service-url:
+          defaultZone: http://localhost:8761/eureka/
+
+    config:
+      uri: http://localhost:8888  # Config server URI
