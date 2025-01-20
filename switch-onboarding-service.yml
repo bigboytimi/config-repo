@@ -1,1 +1,3 @@
-
+spring.application.name=switch-middleware
+switch.account.mirror.bill=8887654321888
+switch.account.mirror.tran=8887654321888
